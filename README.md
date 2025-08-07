@@ -17,7 +17,10 @@ A collection of fun & modern frontend projects:
 - Pure CSS + HTML based aesthetics
 
 ---
-
+## Live Preview
+- https://frontend-mini-projects-olive.vercel.app/
+- https://frontend-mini-projects-hackerloginf.vercel.app/
+- https://frontend-mini-projects-modernlamp.vercel.app/
 ## 🔧 Tech Stack
 - HTML5
 - CSS3 (Responsive + Animated)
