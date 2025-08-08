@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mini-Projects Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #06b6d4;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --background: #f8fafc;
+    --card-background: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background Animation */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 20s infinite linear;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 22s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 28s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 24s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 26s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 23s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 27s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 1.5s; animation-duration: 21s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 3.5s; animation-duration: 25s; }
+.particle:nth-child(10) { left: 95%; animation-delay: 0.5s; animation-duration: 29s; }
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.1; }
+    90% { opacity: 0.1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Header */
+header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.floating-card {
+    width: 80px;
+    height: 80px;
+    background: var(--card-background);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    animation: float-card 3s ease-in-out infinite;
+}
+
+.floating-card:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.floating-card:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.floating-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+@keyframes float-card {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-background);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    transform: translateY(-7px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.play-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image i {
+    font-size: 3rem;
+    color: white;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.card-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-stack span {
+    background: var(--background);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.play-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.play-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.about-content p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: var(--text-primary);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .floating-card {
+        width: 60px;
+        height: 60px;
+    }
+
+    .floating-card i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .projects-section h2,
+    .about-section h2 {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        margin: 0 1rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Frontend Mini-Projects</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Frontend Mini-Projects</h1>
+                <p>Explore a collection of creative and interactive web projects built with HTML, CSS, and JavaScript</p>
+                <button class="cta-button" onclick="scrollToProjects()">
+                    <span>View Projects</span>
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Our Mini-Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card" data-category="game">
+                    <div class="card-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Mario Game</h3>
+                        <p>Interactive Mario-style platform game with smooth animations and controls</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Mario-Game/mario.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="animation">
+                    <div class="card-image">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Birthday Cake Animation</h3>
+                        <p>Beautiful animated birthday cake with interactive elements and celebration effects</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>SVG</span>
+                        </div>
+                        <a href="Bday-cake/bday.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ui">
+                    <div class="card-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Modern Lamp</h3>
+                        <p>Interactive lamp with login functionality and modern UI design</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Modern lamp with Login/lamp.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="game">
+                    <div class="card-image">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Road Crossing Game</h3>
+                        <p>Classic road crossing game with challenging obstacles and scoring system</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Road-Crossing-Game/road.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="utility">
+                    <div class="card-image">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>WiFi Card Generator</h3>
+                        <p>Generate custom WiFi cards with QR codes for easy network sharing</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="wifi-card-generator code/wifi.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="animation">
+                    <div class="card-image">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Neon Dragon</h3>
+                        <p>Stunning neon dragon animation with glowing effects and smooth transitions</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Neon-Dragon/neon.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ui">
+                    <div class="card-image">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Hacker Login Form</h3>
+                        <p>Dark-themed hacker-style login form with matrix effects and animations</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="HackerLoginForm/hacker.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="animation">
+                    <div class="card-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bulb Animation</h3>
+                        <p>Interactive light bulb with toggle functionality and smooth animations</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Bulb/bulb.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ui">
+                    <div class="card-image">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Panda Login Form</h3>
+                        <p>Cute panda-themed login form with interactive animations and responsive design</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Panda-Login-Form/panda.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="animation">
+                    <div class="card-image">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>404 Not Found</h3>
+                        <p>Creative 404 error page with animated eyes and interactive elements</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="404-NotFound/four.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="animation">
+                    <div class="card-image">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Impossible Light Bulb</h3>
+                        <p>Mind-bending impossible light bulb illusion with 3D effects</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Impossible-Light-Bulb/impossible.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ui">
+                    <div class="card-image">
+                        <i class="fas fa-cursor"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Reptile Cursor</h3>
+                        <p>Unique reptile-themed cursor effects with smooth animations</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <a href="Reptile-Cursor/reptile.html" class="play-button">
+                            <i class="fas fa-play"></i>
+                            Play Now
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About This Collection</h2>
+            <div class="about-content">
+                <p>Welcome to our curated collection of Frontend Mini-Projects! Each project is designed to showcase different aspects of web development, from interactive games to beautiful animations and practical utilities.</p>
+                <p>All projects are built using modern web technologies including HTML5, CSS3, and JavaScript, demonstrating various techniques and best practices in frontend development.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Frontend Mini-Projects Collection. Built with ❤️ for the web development community.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll to projects section
+    function scrollToProjects() {
+        document.getElementById('projects').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.9)';
+        }
+    });
+
+    // Add intersection observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe project cards
+    document.addEventListener('DOMContentLoaded', () => {
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+
+    // Add hover and click effects to play buttons
+    const playButtons = document.querySelectorAll('.play-button');
+    playButtons.forEach(button => {
+        button.addEventListener('mouseenter', (e) => {
+            e.target.style.transform = 'translateY(-2px) scale(1.05)';
+        });
+        
+        button.addEventListener('mouseleave', (e) => {
+            e.target.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = e.target.closest('a').href;
+            window.location.href = href;
+        });
+    });
+
+    // Add typing effect to hero title (optional enhancement)
+    function addTypingEffect() {
+        const title = document.querySelector('.hero-content h1');
+        const text = title.textContent;
+        title.textContent = '';
+        
+        let index = 0;
+        const typeInterval = setInterval(() => {
+            title.textContent += text[index];
+            index++;
+            
+            if (index === text.length) {
+                clearInterval(typeInterval);
+            }
+        }, 50);
+    }
+
+    // Initialize typing effect on page load
+    // Uncomment the line below to enable typing effect
+    // document.addEventListener('DOMContentLoaded', addTypingEffect);
+
+    </script>
+</body>
+</html>
